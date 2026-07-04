@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="1000" height="560" fill="#F6F3EC"/>
+  <text x="60" y="72" font-size="40" font-weight="700" fill="#0B2545">EchoDrop</text>
+  <text x="60" y="104" font-size="20" fill="#1C48B5">Chaque fuite a un son. EchoDrop l'entend.</text>
+  <text x="60" y="150" font-size="22" font-weight="600" fill="#0B2545">Comment ça marche</text>
+
+  <!-- Card 1 -->
+  <g>
+    <rect x="60" y="185" width="270" height="315" rx="16" fill="#FFFFFF" stroke="#E2DBCB"/>
+    <circle cx="195" cy="270" r="52" fill="#EAF0FB"/>
+    <!-- pipe -->
+    <rect x="163" y="262" width="64" height="16" rx="3" fill="#0B2545"/>
+    <!-- sound waves -->
+    <path d="M205 250 q14 20 0 40" stroke="#1C48B5" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M216 244 q22 26 0 52" stroke="#1C48B5" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="90" y="360" font-size="26" font-weight="700" fill="#1C48B5">1. Il écoute</text>
+    <text x="90" y="398" font-size="18" fill="#333">Un capteur fixé sur le</text>
+    <text x="90" y="424" font-size="18" fill="#333">tuyau capte le son à</text>
+    <text x="90" y="450" font-size="18" fill="#333">l'intérieur de la conduite.</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g>
+    <rect x="365" y="185" width="270" height="315" rx="16" fill="#FFFFFF" stroke="#E2DBCB"/>
+    <circle cx="500" cy="270" r="52" fill="#EAF0FB"/>
+    <!-- waveform -->
+    <polyline points="470,270 480,252 490,286 500,246 510,290 520,258 530,270"
+      fill="none" stroke="#0B2545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- check badge -->
+    <circle cx="527" cy="296" r="15" fill="#1C48B5"/>
+    <path d="M520 296 l5 5 l9 -11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="395" y="360" font-size="26" font-weight="700" fill="#1C48B5">2. Il reconnaît</text>
+    <text x="395" y="398" font-size="18" fill="#333">Le logiciel distingue le</text>
+    <text x="395" y="424" font-size="18" fill="#333">son d'une fuite d'un</text>
+    <text x="395" y="450" font-size="18" fill="#333">écoulement normal.</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g>
+    <rect x="670" y="185" width="270" height="315" rx="16" fill="#FFFFFF" stroke="#E2DBCB"/>
+    <circle cx="805" cy="270" r="52" fill="#EAF0FB"/>
+    <!-- bell -->
+    <path d="M805 244 c-16 0 -22 12 -22 26 c0 14 -8 18 -8 22 h60 c0 -4 -8 -8 -8 -22 c0 -14 -6 -26 -22 -26 z" fill="#0B2545"/>
+    <circle cx="805" cy="240" r="5" fill="#0B2545"/>
+    <path d="M797 300 a8 8 0 0 0 16 0" fill="#0B2545"/>
+    <circle cx="828" cy="248" r="9" fill="#9A6B1F"/>
+    <text x="700" y="360" font-size="26" font-weight="700" fill="#1C48B5">3. Il alerte</text>
+    <text x="700" y="398" font-size="18" fill="#333">Une alerte est envoyée</text>
+    <text x="700" y="424" font-size="18" fill="#333">pour réparer avant que</text>
+    <text x="700" y="450" font-size="18" fill="#333">l'eau ne soit perdue.</text>
+  </g>
+
+  <text x="60" y="536" font-size="15" fill="#8A8578">Prototype étudiant · réseau d'eau et maison · fabriqué en Tunisie</text>
+</svg>
