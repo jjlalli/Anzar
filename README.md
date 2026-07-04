@@ -41,15 +41,6 @@ It writes `echodrop_signaux.png` (what the sounds look like) and
 These are simulated signals to show the method works, not field recordings. Real
 pipe audio will be noisier, and validating on it is the next step.
 
-## The device
-
-- `echodrop_model.scad`: parametric 3D model of the casing and clip. Open in
-  OpenSCAD, export STL.
-- `echodrop_modele_onshape.md`: step by step to build the CAD model in Onshape.
-- `echodrop_blender.py`: builds the model and renders it in Blender.
-- `echodrop_render.png`: a render of the device on a pipe.
-- `echodrop_dispositif.svg`, `echodrop_comment_ca_marche.svg`: diagrams.
-
 ## Limitations
 
 Early prototype. The detection runs on simulated audio, and the physical device
