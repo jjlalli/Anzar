@@ -18,11 +18,23 @@ is the problem I wanted to work on.
 
 ## How it works
 
-Three parts: a contact microphone on the pipe, an ESP32 that runs the detection,
-and an alert (a buzzer or a WiFi notification). The hard part is the software that
-decides "leak" or "normal" from the sound. It looks at three things: how continuous
-the sound is, how much its energy varies over time, and where its energy sits in
-frequency. A leak is steady and broadband; normal use is short and bursty.
+Three parts: a contact microphone clamped to the pipe, a microcontroller that runs
+the detection on-device, and a local alert. No cloud, no connectivity required —
+the classification happens on the MCU itself, which is what makes the unit cheap
+enough to put on a pipe and forget about.
+
+The hard part is the software that decides "leak" or "normal" from the sound. It
+looks at three things: how continuous the sound is, how much its energy varies over
+time, and where its energy sits in frequency. A leak is steady and broadband; normal
+use is short and bursty.
+
+## Hardware
+
+The signal path was prototyped on an ESP32 with a piezo contact microphone. For the
+bench version I'm specifying an STM32 + MEMS microphone stack so inference runs on
+the microcontroller with industrial-grade sensing, and evaluating ST's edge-AI
+tooling for the on-device model. Sensor selection and the mechanical coupling to the
+pipe are the open questions.
 
 ## The detection demo
 
@@ -47,9 +59,14 @@ pipe audio will be noisier, and validating on it is the next step.
 
 ## Limitations
 
-Early prototype. The detection runs on simulated audio, and the physical device
-isn't built yet. Next steps: record real leak and non-leak audio, build a first
-unit on an ESP32, and test it on a real pipe.
+Early prototype, and I'd rather be precise about what that means. The detection runs
+on **simulated** audio, not field recordings. No physical unit has been built yet, so
+nothing here has met a real pipe. The F1 figure describes the method on synthetic
+signals and should not be read as device performance.
+
+Next steps, in order: record real leak and non-leak audio from a controlled rig,
+finalise the sensor and microcontroller, build the first unit, and validate on a live
+pipe.
 
 ## Note on the name
 
