@@ -1,0 +1,82 @@
+<svg viewBox="0 0 1120 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, sans-serif">
+  <rect width="1120" height="560" fill="#EEF1F4"/>
+  <text x="42" y="50" font-size="26" font-weight="800" fill="#0B2545">Anzar</text>
+  <text x="42" y="72" font-size="13" fill="#6b7280">Comment il détecte et alerte</text>
+
+  <!-- ===== STAGE 1: listens to the leak ===== -->
+  <g>
+    <rect x="40" y="300" width="300" height="42" fill="#C07C46"/>
+    <rect x="40" y="300" width="300" height="10" fill="#D69A63"/>
+    <rect x="40" y="332" width="300" height="10" fill="#A5642F"/>
+    <!-- leak + drops -->
+    <path d="M150 342 l-6 10 l12 0 z" fill="#7D4A22"/>
+    <circle cx="150" cy="360" r="4" fill="#2E6FB5"/>
+    <circle cx="140" cy="372" r="3.4" fill="#2E6FB5"/>
+    <circle cx="160" cy="374" r="3" fill="#2E6FB5"/>
+    <!-- leak sound arcs toward device -->
+    <g stroke="#1C48B5" stroke-width="2.4" fill="none" opacity="0.8" stroke-linecap="round">
+      <path d="M164 314 q16 15 0 30"/>
+      <path d="M176 305 q28 24 0 48"/>
+      <path d="M188 297 q40 32 0 64"/>
+    </g>
+    <!-- device on pipe -->
+    <rect x="248" y="270" width="26" height="14" rx="6" fill="#26334E"/>
+    <rect x="230" y="238" width="62" height="34" rx="9" fill="#F4F6F8" stroke="#D6DBE1"/>
+    <circle cx="276" cy="250" r="4.5" fill="#1C48B5"/>
+  </g>
+
+  <!-- arrow 1 -->
+  <path d="M362 302 l34 18 l-34 18 z" fill="#26334E"/>
+
+  <!-- ===== STAGE 2: recognizes ===== -->
+  <g>
+    <rect x="432" y="238" width="270" height="128" rx="14" fill="#FFFFFF" stroke="#E2DBCB"/>
+    <!-- chip -->
+    <rect x="450" y="252" width="46" height="24" rx="2" fill="#16171B"/>
+    <rect x="455" y="257" width="36" height="14" rx="1" fill="#B9BEC6"/>
+    <text x="473" y="268" font-size="8" fill="#2b2f36" text-anchor="middle" letter-spacing="0.5">ESP32</text>
+    <!-- waveform -->
+    <polyline points="452,318 464,300 476,332 488,296 500,336 512,304 524,324 536,310 552,318"
+      fill="none" stroke="#0B2545" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- arrow to result -->
+    <path d="M566 316 l16 0 m-6 -6 l6 6 l-6 6" stroke="#9AA2AC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- check badge -->
+    <circle cx="628" cy="316" r="22" fill="#1C48B5"/>
+    <path d="M617 316 l7 8 l14 -17" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="628" y="356" font-size="12" font-weight="700" fill="#0B2545" text-anchor="middle">Fuite</text>
+  </g>
+
+  <!-- arrow 2 -->
+  <path d="M724 302 l34 18 l-34 18 z" fill="#26334E"/>
+
+  <!-- ===== STAGE 3: alerts ===== -->
+  <g>
+    <!-- wifi arcs -->
+    <g stroke="#1C48B5" stroke-width="2.6" fill="none" opacity="0.85" stroke-linecap="round">
+      <path d="M792 306 q14 -14 28 0"/>
+      <path d="M784 316 q22 -22 44 0"/>
+      <path d="M776 326 q30 -30 60 0"/>
+    </g>
+    <circle cx="806" cy="330" r="4" fill="#1C48B5"/>
+    <!-- phone -->
+    <rect x="928" y="224" width="120" height="158" rx="18" fill="#0B2545"/>
+    <rect x="940" y="240" width="96" height="126" rx="6" fill="#F4F6F8"/>
+    <path d="M940 246 a6 6 0 0 1 6 -6 h84 a6 6 0 0 1 6 6 v28 h-96 z" fill="#D64541"/>
+    <text x="988" y="264" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Fuite détectée !</text>
+    <path d="M988 292 c-8 9 -8 18 0 23 c8 -5 8 -14 0 -23 z" fill="#1C48B5"/>
+    <text x="988" y="338" font-size="9.5" fill="#3c4149" text-anchor="middle">Perte d'eau détectée</text>
+    <rect x="974" y="352" width="28" height="4" rx="2" fill="#B7BDC5"/>
+  </g>
+
+  <!-- ===== captions ===== -->
+  <g text-anchor="middle">
+    <text x="190" y="452" font-size="17" font-weight="700" fill="#0B2545">1. Il écoute la fuite</text>
+    <text x="190" y="472" font-size="12.5" fill="#6b7280">un son continu dans le tuyau</text>
+
+    <text x="567" y="452" font-size="17" font-weight="700" fill="#0B2545">2. Il reconnaît le son</text>
+    <text x="567" y="472" font-size="12.5" fill="#6b7280">fuite ou écoulement normal</text>
+
+    <text x="960" y="452" font-size="17" font-weight="700" fill="#0B2545">3. Il alerte</text>
+    <text x="960" y="472" font-size="12.5" fill="#6b7280">notification sur le téléphone</text>
+  </g>
+</svg>

@@ -98,7 +98,7 @@ ax[0,1].set_title("Normal - signal"); ax[0,1].set_xlabel("Temps (s)")
 for a_, key, ttl in [(ax[1,0],"leak","Fuite - spectrogramme"),(ax[1,1],"normal","Normal - spectrogramme")]:
     a_.specgram(ex[key], NFFT=256, Fs=FS, noverlap=128, cmap="magma")
     a_.set_title(ttl); a_.set_xlabel("Temps (s)"); a_.set_ylabel("Fréquence (Hz)")
-plt.tight_layout(); plt.savefig("echodrop_signaux.png", dpi=130); plt.close()
+plt.tight_layout(); plt.savefig("anzar_signaux.png", dpi=130); plt.close()
 
 fig, ax = plt.subplots(1, 2, figsize=(11, 4.5))
 m = y == 1
@@ -115,5 +115,5 @@ ax[1].set_title(f"Detection (F1 = {f1:.2f})")
 for (i,j),v in np.ndenumerate(cm):
     ax[1].text(j, i, str(int(v)), ha="center", va="center",
                color="white" if v>cm.max()/2 else "black", fontsize=13)
-plt.tight_layout(); plt.savefig("echodrop_detection.png", dpi=130); plt.close()
+plt.tight_layout(); plt.savefig("anzar_detection.png", dpi=130); plt.close()
 print("figures written")
