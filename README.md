@@ -30,11 +30,11 @@ use is short and bursty.
 
 ## Hardware
 
-The signal path was prototyped on an ESP32 with a piezo contact microphone. For the
-bench version I'm specifying an STM32 + MEMS microphone stack so inference runs on
-the microcontroller with industrial-grade sensing, and evaluating ST's edge-AI
-tooling for the on-device model. Sensor selection and the mechanical coupling to the
-pipe are the open questions.
+The signal path was prototyped on an ESP32 with a piezo contact microphone, and the
+bench rig runs on that same ESP32 stack — the design is chip-agnostic, and the first
+bench validation should test the method, not a new board. An STM32 + MEMS microphone
+stack with ST's edge-AI tooling is the planned upgrade path for industrial-grade
+sensing. The mechanical coupling to the pipe is the open question.
 
 ## The detection demo
 
