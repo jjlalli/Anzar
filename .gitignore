@@ -1,3 +1,11 @@
+.DS_Store
 __pycache__/
 *.pyc
-.DS_Store
+
+# recorded training data and trained libraries stay local
+data/
+firmware/nanoedge/*
+!firmware/nanoedge/README.md
+
+# host test binary
+tests/test_detector

@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1200 470" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, sans-serif">
+  <rect width="1200" height="470" fill="#EEF1F4"/>
+  <text x="42" y="50" font-size="26" font-weight="800" fill="#0B2545">Anzar</text>
+  <text x="42" y="72" font-size="13" fill="#6b7280">From vibration to alert, all on the board</text>
+
+  <g fill="#FFFFFF" stroke="#E2DBCB">
+    <rect x="20"   y="120" width="160" height="230" rx="14"/>
+    <rect x="220"  y="120" width="160" height="230" rx="14"/>
+    <rect x="420"  y="120" width="160" height="230" rx="14"/>
+    <rect x="620"  y="120" width="160" height="230" rx="14"/>
+    <rect x="820"  y="120" width="160" height="230" rx="14"/>
+    <rect x="1020" y="120" width="160" height="230" rx="14"/>
+  </g>
+
+  <g fill="#26334E">
+    <path d="M186 235 l24 0 m-8 -8 l8 8 l-8 8" stroke="#26334E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M386 235 l24 0 m-8 -8 l8 8 l-8 8" stroke="#26334E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M586 235 l24 0 m-8 -8 l8 8 l-8 8" stroke="#26334E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M786 235 l24 0 m-8 -8 l8 8 l-8 8" stroke="#26334E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M986 235 l24 0 m-8 -8 l8 8 l-8 8" stroke="#26334E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 1 vibration -->
+  <rect x="45" y="190" width="110" height="30" fill="#C07C46"/>
+  <rect x="45" y="190" width="110" height="8" fill="#D69A63"/>
+  <g stroke="#1C48B5" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.85">
+    <path d="M78 180 q22 -16 44 0"/>
+    <path d="M68 170 q32 -24 64 0"/>
+  </g>
+  <text x="100" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">Pipe vibration</text>
+  <text x="100" y="310" font-size="12" fill="#6b7280" text-anchor="middle">felt by the</text>
+  <text x="100" y="326" font-size="12" fill="#6b7280" text-anchor="middle">accelerometer</text>
+
+  <!-- 2 window -->
+  <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="245,170 257,160 269,178 281,158 293,176 305,162 317,172 329,166 345,170" stroke="#0B2545"/>
+    <polyline points="245,200 257,192 269,208 281,190 293,206 305,194 317,204 329,196 345,200" stroke="#1C48B5"/>
+    <polyline points="245,230 257,224 269,236 281,222 293,236 305,226 317,234 329,228 345,230" stroke="#9AA2AC"/>
+  </g>
+  <text x="300" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">One window</text>
+  <text x="300" y="310" font-size="12" fill="#6b7280" text-anchor="middle">512 samples x 3 axes</text>
+  <text x="300" y="326" font-size="12" fill="#6b7280" text-anchor="middle">about 0.3 s at 1.67 kHz</text>
+
+  <!-- 3 classifier -->
+  <rect x="465" y="160" width="70" height="70" rx="6" fill="#16171B"/>
+  <g fill="#9AA2AC">
+    <rect x="473" y="152" width="4" height="8"/><rect x="489" y="152" width="4" height="8"/><rect x="505" y="152" width="4" height="8"/><rect x="521" y="152" width="4" height="8"/>
+    <rect x="473" y="230" width="4" height="8"/><rect x="489" y="230" width="4" height="8"/><rect x="505" y="230" width="4" height="8"/><rect x="521" y="230" width="4" height="8"/>
+  </g>
+  <text x="500" y="200" font-size="12" fill="#E6E9ED" text-anchor="middle" letter-spacing="0.5">STM32</text>
+  <text x="500" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">NanoEdge classifier</text>
+  <text x="500" y="310" font-size="12" fill="#6b7280" text-anchor="middle">runs on the board,</text>
+  <text x="500" y="326" font-size="12" fill="#6b7280" text-anchor="middle">no internet needed</text>
+
+  <!-- 4 classes -->
+  <g font-size="13" font-weight="700" text-anchor="middle">
+    <rect x="645" y="150" width="110" height="26" rx="13" fill="#E9ECEF"/>
+    <text x="700" y="168" fill="#3c4149">no flow</text>
+    <rect x="645" y="186" width="110" height="26" rx="13" fill="#DCE6F7"/>
+    <text x="700" y="204" fill="#1C48B5">use</text>
+    <rect x="645" y="222" width="110" height="26" rx="13" fill="#0B2545"/>
+    <text x="700" y="240" fill="#FFFFFF">leak</text>
+  </g>
+  <text x="700" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">Three classes</text>
+  <text x="700" y="310" font-size="12" fill="#6b7280" text-anchor="middle">smoothed by a vote</text>
+  <text x="700" y="326" font-size="12" fill="#6b7280" text-anchor="middle">over 5 windows</text>
+
+  <!-- 5 duration -->
+  <circle cx="900" cy="195" r="36" fill="none" stroke="#0B2545" stroke-width="3"/>
+  <path d="M900 172 L900 195 L916 205" stroke="#0B2545" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="900" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">Duration rules</text>
+  <text x="900" y="310" font-size="12" fill="#6b7280" text-anchor="middle">use for 20 min:</text>
+  <text x="900" y="325" font-size="12" fill="#6b7280" text-anchor="middle">tap left running</text>
+  <text x="900" y="341" font-size="12" fill="#6b7280" text-anchor="middle">leak for 30 min: leak</text>
+
+  <!-- 6 alerts -->
+  <circle cx="1060" cy="178" r="10" fill="#1C48B5"/>
+  <circle cx="1060" cy="178" r="17" fill="none" stroke="#1C48B5" stroke-width="2" opacity="0.35"/>
+  <path d="M1097 168 h10 l12 -10 v40 l-12 -10 h-10 z" fill="#0B2545"/>
+  <path d="M1126 170 q8 8 0 16" stroke="#0B2545" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="1050" y="212" width="100" height="26" rx="5" fill="#16171B"/>
+  <text x="1100" y="230" font-size="11" fill="#9BE7B4" text-anchor="middle" font-family="Menlo, monospace"># ALERT leak</text>
+  <text x="1100" y="290" font-size="15" font-weight="700" fill="#0B2545" text-anchor="middle">Alerts</text>
+  <text x="1100" y="310" font-size="12" fill="#6b7280" text-anchor="middle">LED, buzzer and</text>
+  <text x="1100" y="326" font-size="12" fill="#6b7280" text-anchor="middle">a serial message</text>
+
+  <text x="600" y="420" font-size="13" fill="#6b7280" text-anchor="middle">A tap left running feels like a tap in normal use. Only time tells them apart, so the classifier names the flow and a timer decides.</text>
+</svg>

@@ -1,77 +1,88 @@
 # Anzar
 
-Acoustic leak detection for water pipes. A low-cost device that listens to water
-pipes and finds hidden leaks.
+Anzar is a small sensor that sits on a water pipe, feels it vibrate, and tells
+a leak apart from normal water use. It also catches taps left running. Everything
+runs on the microcontroller, on a battery pack, with no internet connection.
+
+![Anzar mounted on a water pipe](docs/anzar_assembled.svg)
 
 *Anzar (ⴰⵏⵣⴰⵔ) is the Amazigh word for rain, and the name of the rain deity
 invoked in North African drought rituals.*
 
-Tunisia loses close to a third of its drinking water to leaks in old underground
-pipes, and a leak stays invisible until a pipe bursts or a bill jumps. Anzar is
-a small sensor that clips onto a pipe and listens. A leak makes a faint, steady
-sound inside the pipe that people can't hear. Anzar picks it up, tells a leak
-apart from normal water use, and sends an alert so it gets fixed before the water
-is gone.
+## Why
 
-I'm from Tunisia, where water is scarce and a lot of it is lost this way, so this
-is the problem I wanted to work on.
+Roughly a third of Tunisia's drinking water never reaches a tap: by the national
+utility's own 2023 figures, the transmission network delivers 86.8% of the water
+produced and the distribution network 77.7% of what it receives ([SONEDE 2023
+report, as summarised by WMC](https://www.webmanagercenter.com/2025/07/21/549519/sonede-les-chiffres/)).
+The same thing happens at small scale in a house or on a farm: a leak behind a wall
+or a tap left open in a field keeps running until someone happens to notice.
+
+I'm from Tunisia, where water is scarce and a lot of it is lost this way, so this is
+the problem I wanted to work on.
 
 ## How it works
 
-Three parts: a contact microphone clamped to the pipe, a microcontroller that runs
-the detection on-device, and a local alert. No cloud, no connectivity required —
-the classification happens on the MCU itself, which is what makes the unit cheap
-enough to put on a pipe and forget about.
+![From vibration to alert](docs/anzar_flow.svg)
 
-The hard part is the software that decides "leak" or "normal" from the sound. It
-looks at three things: how continuous the sound is, how much its energy varies over
-time, and where its energy sits in frequency. A leak is steady and broadband; normal
-use is short and bursty.
+1. A MEMS accelerometer on the pipe samples vibration at 1.67 kHz, in windows of
+   512 samples on 3 axes (about 0.3 s each).
+2. A NanoEdge AI classifier running on the STM32 labels every window: no flow,
+   use, or leak.
+3. The firmware smooths those labels with a vote over the last five windows and
+   keeps time:
+   - leak-level flow that lasts 30 minutes raises a **leak** alert;
+   - use-level flow that lasts 20 minutes raises a **tap left running** alert.
+4. Alerts show on the board's LED (steady for a leak, blinking for a tap) and can
+   sound a buzzer. With a computer connected, they are also printed on the serial
+   port.
+
+Over any short stretch, a tap left running feels exactly like a tap in normal use.
+The only difference is how long it lasts, so the classifier names the flow and a
+timer makes the call.
 
 ## Hardware
 
-The signal path was prototyped on an ESP32 with a piezo contact microphone, and the
-bench rig runs on that same ESP32 stack — the design is chip-agnostic, and the first
-bench validation should test the method, not a new board. An STM32 + MEMS microphone
-stack with ST's edge-AI tooling is the planned upgrade path for industrial-grade
-sensing. The mechanical coupling to the pipe is the open question.
+![Exploded view](docs/anzar_exploded.svg)
 
-## The detection demo
+- STM32 NUCLEO-F401RE board
+- X-NUCLEO-IKS01A3 MEMS shield (LSM6DSO 3-axis accelerometer)
+- a 7-12 V battery pack on the board's VIN pin
+- an enclosure, clamped or strapped to the pipe
 
-`anzar_demo.py` builds simulated pipe signals (a steady leak hiss, normal taps,
-and a steady appliance hum as a hard case), pulls out those features, and trains a
-small classifier. On this simulated set it reaches an F1 around 0.88. Most of the
-errors are the appliance hum mistaken for a leak, which is the real challenge and
-the next thing to solve.
+Parts, assembly and mounting: [docs/hardware.md](docs/hardware.md).
 
-Run it:
+## Repository
 
-```bash
-pip install numpy matplotlib
-python3 anzar_demo.py
+```
+firmware/app/        application code, drops into an STM32CubeIDE project
+firmware/nanoedge/   where the trained NanoEdge library goes (not committed)
+tools/capture.py     records labelled training data from the board
+tests/               host tests for the decision logic
+docs/                hardware, training guide, diagrams
 ```
 
-It writes `anzar_signaux.png` (what the sounds look like) and
-`anzar_detection.png` (how the two separate, plus the confusion matrix).
+## Getting started
 
-These are simulated signals to show the method works, not field recordings. Real
-pipe audio will be noisier, and validating on it is the next step.
+1. Set up the firmware project and flash the datalog build:
+   [firmware/README.md](firmware/README.md)
+2. Record training data and build the model: [docs/training.md](docs/training.md)
+3. Flash the detect build.
 
-## Limitations
+The decision logic is plain C and has tests that run on any computer with a C
+compiler:
 
-Early prototype, and I'd rather be precise about what that means. The detection runs
-on **simulated** audio, not field recordings. No physical unit has been built yet, so
-nothing here has met a real pipe. The F1 figure describes the method on synthetic
-signals and should not be read as device performance.
+```bash
+sh tests/run_tests.sh
+```
 
-Next steps, in order: record real leak and non-leak audio from a controlled rig,
-finalise the sensor and microcontroller, build the first unit, and validate on a live
-pipe.
+## Status
 
-## Note on the name
-
-This project was previously called EchoDrop; it was renamed to Anzar in July 2026.
+Prototype. Units are running on household plumbing and on our family's olive grove
+in Regueb, Sidi Bouzid. The thresholds above suit a home; long legitimate flows such as
+irrigation need a longer tap threshold (see [docs/training.md](docs/training.md)).
 
 ## License
 
-MIT. See `LICENSE`.
+MIT, see [LICENSE](LICENSE). ST's LSM6DSO driver and the NanoEdge AI libraries are
+not part of this repository and keep their own licenses.
